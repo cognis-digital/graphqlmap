@@ -1,2 +1,3 @@
 2024-06-12T11:55:05  docs: standing on the shoulders of giants (garak, sigma, trufflehog)
 2024-06-20T18:12:12  refactor(engine): add a fast path for the common case
+2024-07-17T13:29:19  style(ci): tune severity weights
