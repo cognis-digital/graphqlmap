@@ -10,3 +10,4 @@
 2024-11-13T14:28:08  perf(docs): add a --format json alias
 2024-12-11T09:45:15  refactor: tidy internals
 2024-12-20T16:02:22  feat(engine): short-circuit on first critical
+2025-01-16T11:19:29  docs(ci): handle empty and malformed input
