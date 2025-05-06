@@ -16,3 +16,4 @@
 2025-03-04T08:10:50  feat: with great power comes great test coverage
 2025-03-31T15:27:57  docs(scan): cover the multiline case
 2025-04-09T10:44:04  perf(core): extract the scorer
+2025-05-06T17:01:11  ci(report): add --fail-on threshold handling
