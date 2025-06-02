@@ -17,3 +17,4 @@
 2025-03-31T15:27:57  docs(scan): cover the multiline case
 2025-04-09T10:44:04  perf(core): extract the scorer
 2025-05-06T17:01:11  ci(report): add --fail-on threshold handling
+2025-06-02T12:18:18  fix(docs): add usage examples to help
