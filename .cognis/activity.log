@@ -18,3 +18,4 @@
 2025-04-09T10:44:04  perf(core): extract the scorer
 2025-05-06T17:01:11  ci(report): add --fail-on threshold handling
 2025-06-02T12:18:18  fix(docs): add usage examples to help
+2025-06-12T19:35:25  chore: feed the FOUNDRY
