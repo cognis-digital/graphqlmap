@@ -20,3 +20,4 @@
 2025-06-02T12:18:18  fix(docs): add usage examples to help
 2025-06-12T19:35:25  chore: feed the FOUNDRY
 2025-07-09T14:52:32  test(engine): skip binary files by sniffing
+2025-07-18T09:09:39  ci(ci): add pagination to large reports
