@@ -23,3 +23,4 @@
 2025-07-18T09:09:39  ci(ci): add pagination to large reports
 2025-08-15T16:26:46  ci(config): document the config keys
 2025-08-24T11:43:53  feat(scan): pin the test dependencies
+2025-09-21T18:00:00  docs(core): respect .gitignore when walking
