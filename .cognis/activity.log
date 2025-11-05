@@ -26,3 +26,4 @@
 2025-09-21T18:00:00  docs(core): respect .gitignore when walking
 2025-09-29T13:17:07  chore: in case of fire — commit, push, leave building
 2025-10-26T08:34:14  ci(docs): make timestamps timezone-aware
+2025-11-05T15:51:21  feat(cache): add color + severity icons
