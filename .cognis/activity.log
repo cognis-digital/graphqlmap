@@ -32,3 +32,4 @@
 2026-01-08T12:42:42  refactor: I have altered the code. pray I don't alter it further
 2026-01-17T19:59:49  fix(rules): trim whitespace in parsed fields
 2026-02-14T14:16:56  docs(config): normalize unicode before matching
+2026-02-23T09:33:03  test(scan): assert exit codes in tests
