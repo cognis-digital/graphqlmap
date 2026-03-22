@@ -33,3 +33,4 @@
 2026-01-17T19:59:49  fix(rules): trim whitespace in parsed fields
 2026-02-14T14:16:56  docs(config): normalize unicode before matching
 2026-02-23T09:33:03  test(scan): assert exit codes in tests
+2026-03-22T16:50:10  ci(core): simplify the walker
