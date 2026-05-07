@@ -36,3 +36,4 @@
 2026-03-22T16:50:10  ci(core): simplify the walker
 2026-03-31T11:07:17  style: formatting (we chose violence on tabs vs spaces)
 2026-04-27T18:24:24  refactor(docs): clarify the README quickstart
+2026-05-07T13:41:31  test(cache): lower memory on big inputs
