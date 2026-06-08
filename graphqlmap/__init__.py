@@ -1,27 +1,11 @@
-"""GRAPHQLMAP - GraphQL introspection attack-surface analyzer.
-
-Defensive forensics/analysis tool: parses a GraphQL introspection result
-(that you own / are authorized to assess) and reports risky fields,
-schema depth, and authorization gaps.
-"""
-
-from .core import (
-    Finding,
-    Severity,
-    AnalysisReport,
-    analyze_introspection,
-    load_introspection,
-)
-
-TOOL_NAME = "graphqlmap"
-TOOL_VERSION = "1.0.0"
-
-__all__ = [
-    "TOOL_NAME",
-    "TOOL_VERSION",
-    "Finding",
-    "Severity",
-    "AnalysisReport",
-    "analyze_introspection",
-    "load_introspection",
-]
+"""graphqlmap — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from graphqlmap.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from graphqlmap.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "graphqlmap"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION
