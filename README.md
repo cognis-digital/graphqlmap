@@ -36,9 +36,8 @@ Analyze GraphQL introspection for risky fields, depth, and authz gaps — withou
 <a name="features"></a>
 ## Features
 
-- ✅ Todo
-- ✅ Fixme
-- ✅ Xxx
+- ✅ Load Introspection
+- ✅ Analyze Introspection
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
