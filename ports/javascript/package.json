@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/graphqlmap",
+  "version": "0.2.0",
+  "description": "JavaScript port of graphqlmap (Cognis Neural Suite)",
+  "bin": {
+    "graphqlmap": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
