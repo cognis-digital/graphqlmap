@@ -1,3 +1,6 @@
-from graphqlmap.cli import main
-import sys
-sys.exit(main())
+"""Enable `python -m graphqlmap`."""
+
+from .cli import main
+
+if __name__ == "__main__":
+    raise SystemExit(main())

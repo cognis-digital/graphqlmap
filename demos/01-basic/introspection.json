@@ -1,0 +1,59 @@
+{
+  "data": {
+    "__schema": {
+      "queryType": { "name": "Query" },
+      "mutationType": { "name": "Mutation" },
+      "subscriptionType": null,
+      "directives": [
+        { "name": "include" },
+        { "name": "skip" },
+        { "name": "deprecated" }
+      ],
+      "types": [
+        {
+          "kind": "OBJECT",
+          "name": "Query",
+          "fields": [
+            { "name": "me", "type": { "kind": "OBJECT", "name": "User", "ofType": null }, "isDeprecated": false },
+            { "name": "user", "type": { "kind": "OBJECT", "name": "User", "ofType": null }, "isDeprecated": false },
+            { "name": "orders", "type": { "kind": "LIST", "name": null, "ofType": { "kind": "OBJECT", "name": "Order", "ofType": null } }, "isDeprecated": false }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Mutation",
+          "fields": [
+            { "name": "createUser", "type": { "kind": "OBJECT", "name": "User", "ofType": null }, "isDeprecated": false },
+            { "name": "deleteUser", "type": { "kind": "SCALAR", "name": "Boolean", "ofType": null }, "isDeprecated": false },
+            { "name": "resetPassword", "type": { "kind": "SCALAR", "name": "Boolean", "ofType": null }, "isDeprecated": false },
+            { "name": "updateUserRole", "type": { "kind": "OBJECT", "name": "User", "ofType": null }, "isDeprecated": false },
+            { "name": "renameOrder", "type": { "kind": "OBJECT", "name": "Order", "ofType": null }, "isDeprecated": false }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "User",
+          "fields": [
+            { "name": "id", "type": { "kind": "SCALAR", "name": "ID", "ofType": null }, "isDeprecated": false },
+            { "name": "email", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": false },
+            { "name": "passwordHash", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": false },
+            { "name": "apiKey", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": false },
+            { "name": "isAdmin", "type": { "kind": "SCALAR", "name": "Boolean", "ofType": null }, "isDeprecated": false },
+            { "name": "ssn", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": false },
+            { "name": "legacyToken", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": true },
+            { "name": "orders", "type": { "kind": "LIST", "name": null, "ofType": { "kind": "OBJECT", "name": "Order", "ofType": null } }, "isDeprecated": false }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Order",
+          "fields": [
+            { "name": "id", "type": { "kind": "SCALAR", "name": "ID", "ofType": null }, "isDeprecated": false },
+            { "name": "creditCardNumber", "type": { "kind": "SCALAR", "name": "String", "ofType": null }, "isDeprecated": false },
+            { "name": "owner", "type": { "kind": "OBJECT", "name": "User", "ofType": null }, "isDeprecated": false }
+          ]
+        }
+      ]
+    }
+  }
+}
