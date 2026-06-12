@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-graphqlmap
+pip install "git+https://github.com/cognis-digital/graphqlmap.git"
 graphqlmap scan .            # → prioritized findings in seconds
 ```
 
@@ -47,7 +47,7 @@ Analyze GraphQL introspection for risky fields, depth, and authz gaps — withou
 ## Quick start
 
 ```bash
-pip install cognis-graphqlmap
+pip install "git+https://github.com/cognis-digital/graphqlmap.git"
 graphqlmap --version
 graphqlmap scan .                       # scan current project
 graphqlmap scan . --format json         # machine-readable
