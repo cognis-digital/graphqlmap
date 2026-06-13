@@ -20,6 +20,35 @@ pip install cognis-graphqlmap
 graphqlmap scan .            # → prioritized findings in seconds
 ```
 
+
+## Usage — step by step
+
+1. Install (Python 3.9+):
+   ```bash
+   pip install graphqlmap
+   ```
+2. Capture a target's introspection result (the `__schema` query response) to a
+   JSON file, then analyze its attack surface:
+   ```bash
+   graphqlmap analyze introspection.json
+   ```
+3. Tune the depth threshold and the severity gate, or write a self-contained
+   HTML report:
+   ```bash
+   graphqlmap analyze introspection.json --depth-threshold 8 --fail-on MEDIUM
+   graphqlmap analyze introspection.json --format html -o report.html
+   ```
+4. Read the output: the table lists each finding (severity, id, title,
+   location, fix). For tooling, use `--format json` and parse `findings[]` and
+   `severity_counts`. The process exits non-zero when a finding meets or
+   exceeds `--fail-on`.
+5. Gate a CI job on the schema (fails the step on MEDIUM+):
+   ```bash
+   graphqlmap analyze introspection.json --format json --fail-on MEDIUM > gql.json
+   ```
+
+> Defensive / authorized use only.
+
 ## Contents
 
 - [Why graphqlmap?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
