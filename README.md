@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/graphqlmap.git"
 graphqlmap scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+GraphQL APIs expose a "schema" — a map of every piece of data an app can request — and if that map is left open, anyone can read it to find passwords, credit card fields, or admin controls hidden inside. GraphqlMap reads that schema and flags the risky parts: sensitive fields like passwords or API keys, dangerous admin actions (delete user, reset password), data structures that could be abused to crash the server, and any spots where access controls look missing. You get a plain report with each issue ranked by severity, so your security team or CI pipeline knows exactly what to fix and in what order. It is built for developers and security engineers who want a fast, no-setup check before an API goes to production.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why graphqlmap?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -44,6 +50,42 @@ Analyze GraphQL introspection for risky fields, depth, and authz gaps — withou
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`graphqlmap` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/graphqlmap/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/graphqlmap/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/graphqlmap.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/graphqlmap.git"  # uv
+pip install "git+https://github.com/cognis-digital/graphqlmap.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/graphqlmap.git
+cd graphqlmap && pip install .
+```
+
+Then run:
+```sh
+graphqlmap --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
