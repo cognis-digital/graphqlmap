@@ -153,18 +153,28 @@ def main(argv: Optional[List[str]] = None) -> int:
         parser.print_help()
         return 2
 
+    if args.depth_threshold < 1:
+        sys.stderr.write(
+            f"error: --depth-threshold must be >= 1, got {args.depth_threshold!r}\n"
+        )
+        return 2
+
     try:
         schema = load_introspection(args.introspection)
-    except (OSError, ValueError, json.JSONDecodeError) as exc:
+    except (OSError, FileNotFoundError, ValueError, json.JSONDecodeError) as exc:
         sys.stderr.write(f"error: {exc}\n")
         return 2
 
-    report = analyze_introspection(
-        schema,
-        depth_threshold=args.depth_threshold,
-        tool=TOOL_NAME,
-        version=TOOL_VERSION,
-    )
+    try:
+        report = analyze_introspection(
+            schema,
+            depth_threshold=args.depth_threshold,
+            tool=TOOL_NAME,
+            version=TOOL_VERSION,
+        )
+    except (TypeError, ValueError) as exc:
+        sys.stderr.write(f"error: analysis failed — {exc}\n")
+        return 2
 
     if args.format == "json":
         out = json.dumps(report.to_dict(), indent=2)

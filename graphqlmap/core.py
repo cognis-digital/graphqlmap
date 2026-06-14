@@ -112,22 +112,50 @@ class AnalysisReport:
 
 def load_introspection(path: str) -> Dict[str, Any]:
     """Load an introspection JSON file and return the __schema object."""
+    import os
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"Introspection file not found: {path!r}")
+    if os.path.getsize(path) == 0:
+        raise ValueError(f"Introspection file is empty: {path!r}")
     with open(path, "r", encoding="utf-8") as fh:
-        doc = json.load(fh)
+        raw = fh.read()
+    if not raw.strip():
+        raise ValueError(f"Introspection file contains only whitespace: {path!r}")
+    try:
+        doc = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise json.JSONDecodeError(
+            f"Introspection file is not valid JSON: {exc.msg}", exc.doc, exc.pos
+        ) from exc
     return _extract_schema(doc)
 
 
 def _extract_schema(doc: Dict[str, Any]) -> Dict[str, Any]:
     """Tolerate the common envelopes: {data:{__schema}}, {__schema}, or schema itself."""
     if not isinstance(doc, dict):
-        raise ValueError("Introspection document must be a JSON object")
+        raise ValueError(
+            f"Introspection document must be a JSON object, got {type(doc).__name__}"
+        )
     if "data" in doc and isinstance(doc["data"], dict) and "__schema" in doc["data"]:
-        return doc["data"]["__schema"]
+        schema = doc["data"]["__schema"]
+        if not isinstance(schema, dict):
+            raise ValueError(
+                f"data.__schema must be a JSON object, got {type(schema).__name__}"
+            )
+        return schema
     if "__schema" in doc:
-        return doc["__schema"]
+        schema = doc["__schema"]
+        if not isinstance(schema, dict):
+            raise ValueError(
+                f"__schema must be a JSON object, got {type(schema).__name__}"
+            )
+        return schema
     if "types" in doc and "queryType" in doc:
         return doc
-    raise ValueError("Could not locate a __schema object in introspection document")
+    raise ValueError(
+        "Could not locate a __schema object in introspection document. "
+        "Expected one of: {data: {__schema: ...}}, {__schema: ...}, or a raw schema object."
+    )
 
 
 def _named_type(type_ref: Optional[Dict[str, Any]]) -> Optional[str]:
@@ -184,6 +212,16 @@ def analyze_introspection(schema: Dict[str, Any],
                           tool: str = "graphqlmap",
                           version: str = "1.0.0") -> AnalysisReport:
     """Run all heuristic checks against an introspection __schema object."""
+    if not isinstance(schema, dict):
+        raise TypeError(f"schema must be a dict, got {type(schema).__name__}")
+    if not isinstance(depth_threshold, int) or isinstance(depth_threshold, bool):
+        raise TypeError(f"depth_threshold must be an int, got {type(depth_threshold).__name__}")
+    if depth_threshold < 1:
+        raise ValueError(f"depth_threshold must be >= 1, got {depth_threshold!r}")
+    if not isinstance(tool, str) or not tool.strip():
+        raise ValueError("tool must be a non-empty string")
+    if not isinstance(version, str) or not version.strip():
+        raise ValueError("version must be a non-empty string")
     types = _index_types(schema)
     report = AnalysisReport(tool=tool, version=version)
 

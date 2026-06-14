@@ -32,3 +32,12 @@ graphqlmap = "graphqlmap.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["graphqlmap"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F"]
+# E501 is suppressed because the HTML-generation strings in cli.py are intentionally
+# long and splitting them would reduce readability without any safety benefit.
+ignore = ["E501"]
