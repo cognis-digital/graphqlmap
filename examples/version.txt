@@ -1,0 +1,3 @@
+$ graphqlmap-emit --version
+
+graphqlmap 0.1.0

@@ -1,0 +1,14 @@
+$ graphqlmap-emit --help
+
+usage: graphqlmap [-h] [--version] {analyze} ...
+
+Analyze a GraphQL introspection result for risky fields, excessive depth, and
+authorization gaps (defensive / authorized use only).
+
+positional arguments:
+  {analyze}
+    analyze   Analyze an introspection JSON file.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit

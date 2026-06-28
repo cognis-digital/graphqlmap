@@ -21,6 +21,64 @@ graphqlmap scan .            # → prioritized findings in seconds
 ```
 
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ graphqlmap-emit --version
+graphqlmap 0.1.0
+```
+
+```console
+$ graphqlmap-emit --help
+usage: graphqlmap [-h] [--version] {analyze} ...
+
+Analyze a GraphQL introspection result for risky fields, excessive depth, and
+authorization gaps (defensive / authorized use only).
+
+positional arguments:
+  {analyze}
+    analyze   Analyze an introspection JSON file.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+```
+
+> Blocks above are real `graphqlmap` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+  "findings": [
+    {
+      "id": "123456",
+      "title": "Suspicious Network Traffic",
+      "description": "Potential malicious activity detected on network port 8080",
+      "created_at": "2023-02-15T14:30:00Z",
+      "updated_at": "2023-02-15T14:30:00Z",
+      "labels": ["network", "malware"],
+      "observables": [
+        {
+          "type": "ip-dst",
+          "value": "192.168.1.100"
+        },
+        {
+          "type": "port",
+          "value": 8080
+        }
+      ]
+    }
+  ]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install (Python 3.9+):
